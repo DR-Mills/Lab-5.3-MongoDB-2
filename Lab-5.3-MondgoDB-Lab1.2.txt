@@ -1,0 +1,53 @@
+1.	db.people.insertOne({
+first_name: 'Jack',
+last_name: 'Pumpkin',
+email: 'pumpkinking@halloween.org',
+gender: 'Male',
+age: 2057,
+state: 'Texas',
+children: []
+})
+
+2.	db.people.insertOne({
+first_name: 'Jesus',
+last_name: 'Christ',
+email: 'JC@gates.god',
+gender: 'Male',
+age: 35,
+state: 'New Mexico',
+children: 
+ [ { name: 'Judah', age: 17 },
+   { name: 'Jackson', age: 13 } ]
+})
+
+3.	db.people.updateOne({first_name: "Clarence", state: "North Dakota"}, {$set: {state: "South Dakota"}})
+
+4.	db.people.updateOne({first_name: "Rebecca", last_name: "Hayes"}, {$set: {email: null}})
+
+5.	db.people.updateMany({state: "Missouri"}, {$inc: {age: 1}})
+
+6.	db.people.replaceOne({first_name: "Jerry", last_name: "Baker"}, { first_name: "Jerry", last_name: "Baker-Mendez", email: "jerry@classic.ly", gender:"Male", age: 28, state: "Vermont", "children": [{name: "Alan", age: 18}, {name: "Jenny", age: 3}] })
+
+7.	db.people.deleteOne({ first_name: "Wanda", last_name: "Bowman"})
+
+8.	db.people.deleteMany({email: null})
+
+9.	db.submissions.insertMany([
+{title: "The River Bend", upvotes: 10, downvotes: 2, artist: ObjectId("62b1d56d35640ceb35043b5d")},
+{title: "Nine Lives", upvotes: 7, downvotes: 0, artist: ObjectId("62b1d56d35640ceb35043b8b")},
+{title: "Star Bright", upvotes: 19, downvotes: 3, artist: ObjectId("62b1d56d35640ceb35043c0e")},
+{title: "Why Like This?", upvotes: 1, downvotes: 5, artist: ObjectId("62b1d56d35640ceb35043c0e")},
+{title: "Non Sequitur", upvotes: 11, downvotes: 1, artist: ObjectId("62b1d56d35640ceb35043b5b")}
+  ])
+
+10.	db.submissions.updateOne({title: "The River Bend"}, {$inc: {upvotes: 2}})
+
+11.	db.people.deleteMany({email: null})
+
+12.	db.people.updateOne({first_name: "Helen", last_name: "Clark"}, {$push: {children: {name: "Melanie", age: 0}}})
+
+13.	db.people.updateOne({first_name: "Joan", last_name: "Bishop", "children.name": "Catherine"}, { $set: {"children.$.name": "Cat"}, $inc: {"children.$.age": 1} })
+
+14.	db.submissions.find({ "$expr": {"$gt": ["$downvotes", "$upvotes"]} })
+
+
